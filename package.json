@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "changelog": "github-changes -o signalk -r signalk-server-node -a --only-pulls --use-commit-body --data=pulls",
+    "format": "prettier-standard 'lib/**/*.js' 'providers/**/*.js'",
     "start": "node bin/signalk-server",
     "test": "mocha"
   },
@@ -107,6 +108,7 @@
     "freeport-promise": "^1.0.0",
     "github-changes": "^1.0.4",
     "mocha": "^3.2.0",
+    "prettier-standard": "^6.0.0",
     "request": "^2.81.0",
     "request-promise": "^4.1.1"
   }
