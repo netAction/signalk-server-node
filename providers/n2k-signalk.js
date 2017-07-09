@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- 
+
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,30 +14,28 @@
  * limitations under the License.
  */
 
-var Transform = require('stream').Transform;
+var Transform = require('stream').Transform
 
-var toDelta = require('n2k-signalk').toDelta;
+var toDelta = require('n2k-signalk').toDelta
 
-require('util').inherits(ToSignalK, Transform);
+require('util').inherits(ToSignalK, Transform)
 
-function ToSignalK() {
+function ToSignalK () {
   Transform.call(this, {
     objectMode: true
-  });
+  })
 }
 
-
-ToSignalK.prototype._transform = function(chunk, encoding, done) {
+ToSignalK.prototype._transform = function (chunk, encoding, done) {
   try {
-    var delta = toDelta(chunk);
+    var delta = toDelta(chunk)
     if (delta && delta.updates[0].values.length > 0) {
-      this.push(delta);
+      this.push(delta)
     }
   } catch (ex) {
-    console.error(ex);
+    console.error(ex)
   }
-  done();
+  done()
 }
 
-
-module.exports = ToSignalK;
+module.exports = ToSignalK
